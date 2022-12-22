@@ -19,7 +19,7 @@ class Content(Mapping):
     def __init__(self, metadata, content) -> None:
         super().__init__()
         self.data = metadata
-        self.data.update({ "content": content })
+        self.data["content"] = content
     
     
     @property
