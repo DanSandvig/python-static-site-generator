@@ -29,16 +29,16 @@ class Content(Mapping):
     
     @property
     def type(self):
-        return self.data["type"] if self.data["type"] else None
+        return self.data["type"] if "type" in self.data else None
     
     
     @type.setter
-    def type(self, value):
-        self.data["type"] = value
+    def type(self, type):
+        self.data["type"] = type
     
         
-    def __getitem__(self, __key: _KT) -> _VT_co:
-        return self.data(__key)
+    def __getitem__(self, key):
+        return self.data[key]
     
 
     def __iter__(self) -> Iterator[_T_co]:
