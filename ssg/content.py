@@ -4,16 +4,16 @@ from collections.abc import Mapping
 
 class Content(Mapping):
     
-    __delimiter = "^(?:-|\+){3}\s*$"
+    __delimiter = r"^(?:-|\+){3}\s*$"
     __regex = re.compile(__delimiter, re.MULTILINE)
 
-    
-    def load(self, cls, string):
+    @classmethod
+    def load(cls, string):
         
         _, fm, content = self.__regex.split(string, 2)
         
-        load(fm, Loader=FullLoader)
-        cls(metadata, content)
+        metadata = load(fm, Loader=FullLoader)
+        return cls(metadata, content)
     
         
     def __init__(self, metadata, content) -> None:
