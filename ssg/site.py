@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 
 class Site:
     """Definition of a basic website structure"""
@@ -35,4 +36,9 @@ class Site:
         if parser is not None:
             parser.parse(path, self.source, self.dest)
         else:
-            print("Not Implemented")
+            self.error("No parser for the {} extension, file skipped!".format())
+
+
+    @staticmethod
+    def error(message):
+        sys.stderr.write("\x1b[1;31m{}\n".format(message))
